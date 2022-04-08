@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /* ### Primary */
+
+--lightCyan: hsl(193, 38%, 86%);
+--neonGreen: hsl(150, 100%, 66%);
+
+/* ### Neutral */
+
+--grayishBlue: hsl(217, 19%, 38%);
+--darkGrayishBlue: hsl(217, 19%, 24%);
+--darkBlue: hsl(218, 23%, 16%);
+}
+
+body{
+    background-color: var(--darkBlue);
+    color: var(--lightCyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    
+}
+
+main{
+    background-color: var(--darkGrayishBlue);
+    height: 330px;
+    width: 370px;
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+h1{
+    font-size: 11px;
+    color:var(--neonGreen);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+p{
+    font-size: 25px;
+    font-weight: 800;
+}
+
+div#generator{
+    background-color: var(--neonGreen);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -30px;
+    
+}
+
+div#generator:hover{
+    cursor: pointer;
+    box-shadow: 0 0 30px var(--neonGreen);
+}
+
+div#divider{
+    margin-top: 23px;
+}
+
+div.attribution{
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -181px;
+}
