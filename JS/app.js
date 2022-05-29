@@ -1,32 +1,44 @@
 const quoteNum = document.querySelector("span");
 const quoteText = document.querySelector("p");
 const getQuoteButton = document.querySelector("#generator");
+const dividerImg = document.querySelector("#divider img");
+const apiLink = "https://api.adviceslip.com/advice";
 
-// console.log(quoteNum.textContent, quoteText.textContent);
-
-const getQuotes = (callBackFunction) => {
-  const request = new XMLHttpRequest();
-
-  request.addEventListener("readystatechange", () => {
-    if (request.readyState === 4 && request.status === 200) {
-      const data = JSON.parse(request.responseText);
-      callBackFunction(undefined, data, request.status);
-    } else if (request.readyState === 4) {
-      callBackFunction("could not fetch data :(", undefined, request.status);
-    }
-  });
-
-  request.open("GET", "https://api.adviceslip.com/advice");
-  request.send();
+const getQuotes = async (dataSource) => {
+  const response = await fetch(apiLink);
+  const data = await response.json();
+  return data;
 };
+
 getQuoteButton.addEventListener("click", (e) => {
-  getQuotes((err, data, status) => {
-    if (data) {
-      console.log(data.slip.advice, status);
+  getQuotes(apiLink)
+    .then((data) => {
+      console.log(data.slip);
       quoteNum.textContent = data.slip.id;
       quoteText.textContent = data.slip.advice;
-    } else {
-      console.log(err, status);
-    }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+getQuotes(apiLink)
+  .then((data) => {
+    console.log(data);
+    quoteNum.textContent = data.slip.id;
+    quoteText.textContent = data.slip.advice;
+  })
+  .catch((err) => {
+    console.log(err);
   });
+
+// change divider img for larger screens
+// if(window.innerWidth)
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 640) {
+    dividerImg.src = "./images/pattern-divider-desktop.svg";
+  } else {
+    dividerImg.src = "./images/pattern-divider-mobile.svg";
+  }
 });

@@ -1,0 +1,13 @@
+@media screen and (min-width: 400px) {
+  main {
+    height: 335px;
+    width: 540px;
+    padding: 40px 50px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  div#divider {
+    margin-top: 40px;
+  }
+}
