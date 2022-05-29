@@ -35,10 +35,15 @@ getQuotes(apiLink)
 // change divider img for larger screens
 // if(window.innerWidth)
 
-window.addEventListener("resize", () => {
+const dividerImgSet = function () {
   if (window.innerWidth > 640) {
     dividerImg.src = "./images/pattern-divider-desktop.svg";
   } else {
     dividerImg.src = "./images/pattern-divider-mobile.svg";
   }
+};
+window.addEventListener("resize", () => {
+  dividerImgSet();
 });
+
+dividerImgSet();
