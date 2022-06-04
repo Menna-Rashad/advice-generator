@@ -3,8 +3,6 @@ const quoteText = document.querySelector("p");
 const getQuoteButton = document.querySelector("#generator");
 const dividerImg = document.querySelector("#divider img");
 const apiLink = "https://api.adviceslip.com/advice";
-const prevButton = document.querySelector("#previous");
-localStorage.setItem("oldID", `0`);
 
 const getQuotes = async (dataSource) => {
   const response = await fetch(dataSource);
@@ -40,17 +38,6 @@ getQuoteButton.addEventListener("click", (e) => {
     .catch((err) => {
       console.log(err);
     });
-});
-
-// previous button as requested
-prevButton.addEventListener("click", () => {
-  getQuotes(
-    `https://api.adviceslip.com/advice/${localStorage.getItem("oldID")}`
-  ).then((data) => {
-    console.log(data.slip);
-    quoteNum.textContent = data.slip.id;
-    quoteText.textContent = data.slip.advice;
-  });
 });
 
 // change divider img for larger screens
